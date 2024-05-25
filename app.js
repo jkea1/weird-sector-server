@@ -3,22 +3,21 @@ import express from 'express'
 import 'express-async-errors'
 import helmet from 'helmet'
 import morgan from 'morgan' // 디버깅
-import { config } from './config.js'
 import { connectDB } from './database/database.js'
 import authRouter from './router/auth.js'
 import postsRouter from './router/posts.js'
 
 const app = express()
 
-const corsOptions = {
-  origin: config.cors.allowedOrigin,
-  optionsSuccessStatus: 200,
-}
+// const corsOptions = {
+//   origin: config.cors.allowedOrigin,
+//   optionsSuccessStatus: 200,
+// }
 
 // 미들웨어 세팅
 app.use(express.json())
 app.use(helmet())
-app.use(cors(corsOptions))
+app.use(cors())
 app.use(morgan('tiny'))
 
 // 모든 posts와 관련된 요청은 postsRouter로 간다.
