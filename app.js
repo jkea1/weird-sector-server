@@ -42,6 +42,6 @@ app.use((error, req, res, next) => {
 connectDB()
   .then(() => {
     console.log(`Server is started... ${new Date()}`)
-    app.listen(config.port)
+    app.listen(8080)
   })
   .catch(console.error)
